@@ -1,22 +1,17 @@
-This is a document to introduce you to React. It'll walk you through setting up a react project and deploying it on AWS S3.
-We'll build a website that renders a random joke from a jokes API.
+This is a document to introduce you to React. 
+We'll build a website that renders a random joke from a jokes API. We'll then deploy to Amazon Web Services
 
 
 
-Ok, start a react app using Create React App. This is the officially recommended to start a hobby react project.
-https://create-react-app.dev/
-
-
-first, go to the directory where you want to hold your code:
+Ok, start a new react app using Create React App. This is the officially recommended way to start a hobby react project.
+```
 $ cd ~/Desktop
-
-then, run create-react-app:
 $ npx create-react-app MY_APP_NAME
 $ cd MY_APP_NAME
+```
 
-
-now, try running a development server on computer:
-$ npm start
+now, try running a development server on your computer:
+```$ npm start```
 
 
 you should be able to see your app running on http://localhost:3000
@@ -39,8 +34,12 @@ class App extends React.Component {
 
 export default App
 ```
-We've replaced that function component with this App class component. Function components are getting more popular but class components are the original gangsters.
-render is one of React's "lifecycle" methods. It's one of the very special functions that React treats differently from other functions that you write.
+
+This is a class component. 
+Try learning class component first, then function components.
+
+render is one of React's "lifecycle" methods. React looks at render to see what to show on the screen.
+
 
 Now, check your app, it's going to look a lot more basic than before.
 
