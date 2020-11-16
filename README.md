@@ -154,6 +154,51 @@ render = () => {
 ...
 ```
 
+Great! Now test your app a few times.
+
+
+Now, let's deploy to s3. 
+1) Create a new account AWS
+2) Search for S3 and click on the link.
+3) Click Create Bucket
+4) Name your bucket, such as joke-website
+5) Scroll down and uncheck block all public access
+6) Check the box for "I acknowledge that the current settings might result in this bucket and the objects within becoming public."
+7) Click Create Bucket
+8) Click on the name of the bucket you just created.
+9) Now, go back to your terminal and compile your react app into a production ready 'build' folder by running `$ npm run build`
+10) Navigate into that newly created build folder in finder.
+11) Drag all the items in that build folder into S3. (The AWS tab on your browser)
+12) Go to the permissions tab of your bucket
+13) Scroll down to bucket policy, click edit
+14) paste in this policy:
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws:s3:::joke-website/*"
+        }
+    ]
+}
+```
+Make sure to replace joke-website with the name of your bucket if it is not that
+15) Save Changes.
+
+12) Now click on the properties tab
+13) Scroll all the way down to static website hosting and click edit
+14) Click enable, specify index.html as both the Index Document and Error Document
+15) Save changes
+16) Your website is hosted under the Static Website Hosting > Bucket website endpoint !
+
+You can now share this link with all of your friends!
 
 
 
