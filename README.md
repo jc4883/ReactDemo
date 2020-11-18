@@ -82,7 +82,7 @@ render = () => {
 ```
 
 Back in the browser, you'll see that there's nothing rendered after "This is the joke's setup" or "This is the joke's delivery".
-This is because the this.state.setup and this.state.delivery are empty strings right now. If you wanted to, you could initialize them to some other strings,
+This is because the `this.state.setup` and `this.state.delivery` are empty strings right now. If you wanted to, you could initialize them to some other strings,
 and they would show up on screen.
 
 Great, now let's write a function that retries data from the jokes API:
@@ -93,9 +93,9 @@ class App extends React.Component {
   constructor(props) {
     ...
   }
-
+  
   handleClick = () => {
-    fetch('https://sv443.net/jokeapi/v2/joke/Any')
+    fetch('https://sv443.net/jokeapi/v2/joke/Any?type=twopart')
       .then(res => res.json())
       .then(data => console.log('data', data))
   }
