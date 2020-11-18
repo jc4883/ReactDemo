@@ -85,7 +85,7 @@ Back in the browser, you'll see that there's nothing rendered after "This is the
 This is because the `this.state.setup` and `this.state.delivery` are empty strings right now. If you wanted to, you could initialize them to some other strings,
 and they would show up on screen.
 
-Great, now let's write a function that retries data from the jokes API:
+Great, now let's write a function that retrieves data from the jokes API:
 
 
 ```
@@ -110,6 +110,27 @@ This function makes a GET request to that URL, gets the response and turns it in
 Don't worry about that fetch call for now, it's also boilerplate that you use everytime you want to call an API.
 What's important is that you asked for a resource from that URL and you got back some data. 
 
+
+
+Now, let's expose a button which will when pressed will trigger the `handleClick`
+
+```
+...
+render = () => {
+  return (
+    <div>
+      This is the joke's setup: {this.state.setup}
+      <br/>
+      The is the joke's delivery: {this.state.delivery}
+      <br/>
+      <button onClick={this.handleClick}>Give me a new joke!</button>
+    </div>
+  )
+}
+...
+```
+
+
 Now, upon inspection of the data in your console (right click in Chrome > inspect > console tab), we realize the data has a "setup" and "delivery" data.
 Ok, now, let's update our state with those data.
 
@@ -133,25 +154,8 @@ handleClick = () => {
 Here, instead of printing out the data, we grabbed the piece of data that we want, "setup" and "delivery", and used the `this.setState` function given to us by React.
 
 
-Awesome! So now we need to actually call `handleClick` to update the our state with the joke from the jokes API.
+Awesome! So now when we click on the button, we call `handleClick` to update our state, and our screen updates with the joke we fetched.
 
-Let's expose a button which will when pressed will trigger the `handleClick`
-
-```
-...
-render = () => {
-  return (
-    <div>
-      This is the joke's setup: {this.state.setup}
-      <br/>
-      The is the joke's delivery: {this.state.delivery}
-      <br/>
-      <button onClick={this.handleClick}>Give me a new joke!</button>
-    </div>
-  )
-}
-...
-```
 
 Great! Now test your app a few times.
 
@@ -189,13 +193,13 @@ Now, let's deploy to s3.
 }
 ```
 Make sure to replace joke-website with the name of your bucket if it is not that
-15) Save Changes.
 
-12) Now click on the properties tab
-13) Scroll all the way down to static website hosting and click edit
-14) Click enable, specify index.html as both the Index Document and Error Document
-15) Save changes
-16) Your website is hosted under the Static Website Hosting > Bucket website endpoint !
+15) Save Changes.
+16) Now click on the properties tab
+17) Scroll all the way down to static website hosting and click edit
+18) Click enable, specify index.html as both the Index Document and Error Document
+19) Save changes
+20) Your website is hosted under the Static Website Hosting > Bucket website endpoint !
 
 You can now share this link with all of your friends!
 
