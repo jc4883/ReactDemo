@@ -52,7 +52,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       setup: '',
-      delivery: ''
+      punchline: ''
     }
   }
   
@@ -75,14 +75,14 @@ render = () => {
     <div>
       This is the joke's setup: {this.state.setup}
       <br/>
-      The is the joke's delivery: {this.state.delivery}
+      The is the joke's punchline: {this.state.punchline}
     </div>
   )
 }
 ```
 
 Back in the browser, you'll see that there's nothing rendered after "This is the joke's setup" or "This is the joke's delivery".
-This is because the `this.state.setup` and `this.state.delivery` are empty strings right now. If you wanted to, you could initialize them to some other strings,
+This is because the `this.state.setup` and `this.state.punchline` are empty strings right now. If you wanted to, you could initialize them to some other strings,
 and they would show up on screen.
 
 Great, now let's write a function that retrieves data from the jokes API:
@@ -95,7 +95,7 @@ class App extends React.Component {
   }
   
   handleClick = () => {
-    fetch('https://sv443.net/jokeapi/v2/joke/Any?type=twopart')
+    fetch('https://official-joke-api.appspot.com/random_joke')
       .then(res => res.json())
       .then(data => console.log('data', data))
   }
@@ -121,7 +121,7 @@ render = () => {
     <div>
       This is the joke's setup: {this.state.setup}
       <br/>
-      The is the joke's delivery: {this.state.delivery}
+      The is the joke's delivery: {this.state.punchline}
       <br/>
       <button onClick={this.handleClick}>Give me a new joke!</button>
     </div>
@@ -138,13 +138,13 @@ Ok, now, let's update our state with those data.
 ...
 
 handleClick = () => {
-  fetch('https://sv443.net/jokeapi/v2/joke/Any')
+  fetch('https://official-joke-api.appspot.com/random_joke')
     .then(res => res.json())
     .then(data => {
       const setup = data.setup;
       const delivery = data.delivery;
 
-      this.setState({setup: setup, delivery: delivery})
+      this.setState({setup: setup, punchline: punchline})
     })
 }
 
